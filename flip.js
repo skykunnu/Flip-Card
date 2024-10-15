@@ -7,53 +7,54 @@ let openImagesStore=[];
 let openImages=0;
 let result=document.querySelector("#Result");
 let Container=document.querySelector('.container');
-let timer=0;
-
+let timer=60;
+let Timer=document.querySelector('#time');
+let TimerDiv=document.querySelector('#timer');
+let counter=0;
 
 backImage();
 startTimer();
+
 flipFrontImage.forEach((flipFront_image)=>{
     flipFront_image.addEventListener('click',()=>{
         openImages++;
         flipFront_image.parentElement.parentElement.classList.add('backSide');
         openImagesStore.push(flipFront_image.parentElement.nextElementSibling.children[0])
         
-        setTimeout(()=>{
+        
             if(openImages>1){
                 if(openImagesStore[0].src===openImagesStore[1].src){
                     openImages=0;
                 openImagesStore.length=0;
+                counter++;
                 
             }
             else{
+                setTimeout(()=>{
                 openImagesStore.forEach((Img)=>{
                     Img.parentElement.parentElement.classList.remove('backSide');
                 })
                 openImages=0;
                 openImagesStore.length=0;
+            },1000)
             }
+            
         }
-        
-    },1000)
 })
 })
-
 
 function startTimer(){
    let interval=setInterval(()=>{
-        timer++;
-       if(timer===60){
-        Container.style.display='none';
-        result.style.display='block';
-        clearInterval(interval);
-       }
-       console.log(timer)
+       Timer.innerHTML=--timer; 
+       if(timer===0 || counter===6){
+           Container.style.display='none';
+           result.style.display='block';
+           TimerDiv.style.display='none';
+           clearInterval(interval);
+
+        }
     },900)
 }
-
-
-
-
 
 function randomIndex(){
     let RandomIndex=Math.floor(Math.random()*actualImage.length);
@@ -66,7 +67,6 @@ function randomIndex(){
 
 function backImage(){
     for(let i=0;i<actualImage.length;i++){
-
         let Img=document.createElement('img');
         Img.src=actualImage[randomIndex()];
         flipBackImage[i].append(Img);
