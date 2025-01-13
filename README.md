@@ -15,3 +15,8 @@ The Memory Matching Game is an engaging and interactive game where players flip 
 4. **Pair Matching Logic**: Checks for matching pairs and provides instant feedback.
 5. **Dynamic End-Game**: Displays a custom message when the game is completed or the timer runs out.
 6. **Responsive Design**: Adaptable UI for various screen sizes and devices.
+
+
+![image](https://github.com/user-attachments/assets/76a06b2c-a0d1-4cff-acab-d2e269f247bf)
+
+![image](https://github.com/user-attachments/assets/0c6ab49f-dc90-4bf2-a37b-63fc31cbf026)
